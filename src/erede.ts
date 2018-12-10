@@ -2,6 +2,9 @@ import axios, {  AxiosPromise } from 'axios';
 import { AuthorizationResponse } from './model/authorizationResponse';
 import { CaptureResponse } from './model/captureResponse';
 import { RefundResponse } from './model/refundResponse';
+import { AuthorizationRequest } from './model/authorizationRequest';
+import { CaptureRequest } from './model/captureRequest';
+import { RefundRequest } from './model/refundRequest';
 
 enum URL {
   producao = "https://api.userede.com.br/erede/v1/transactions",
@@ -29,7 +32,7 @@ export class ERede {
   /**
    * @description retorna a credencial de acesso que deve ser passada no HEAD da requisição
    */
-  getCredential(): string {
+  protected getCredential(): string {
     let credential = this.filiacao + ':' + this.token;
     return 'Basic '.concat(Buffer.from(credential).toString('base64'));
   }
@@ -38,7 +41,7 @@ export class ERede {
    * @description gera uma autorização no eRede
    * @url https://www.userede.com.br/desenvolvedores/pt/produto/e-Rede#documentacao-autorizacao
    */
-  authorization(data: any): Promise<AuthorizationResponse> {
+  authorization(data: AuthorizationRequest): Promise<AuthorizationResponse> {
     return new Promise((resolve, reject) => {
       axios({
         method: 'POST',
@@ -56,7 +59,7 @@ export class ERede {
   /**
    * @description Cancela uma venda através do TID
    */
-  cancelSale(TID: string, data: any): Promise<RefundResponse> {
+  cancelSale(TID: string, data: RefundRequest): Promise<RefundResponse> {
     return new Promise((resolve, reject) => {
       axios({
         method: 'POST',
@@ -76,7 +79,7 @@ export class ERede {
    * @param TID número do TID da transação
    * @param data Objeto com o valor da captura
    */
-  capture(TID: string, data: any): Promise<CaptureResponse> {
+  capture(TID: string, data: CaptureRequest): Promise<CaptureResponse> {
     return new Promise((resolve, reject) => {
       axios({
         method: 'PUT',
@@ -109,4 +112,13 @@ export class ERede {
       }).catch(reject);
     })
   }
+}
+
+export {
+  AuthorizationResponse,
+  CaptureResponse,
+  RefundResponse,
+  AuthorizationRequest,
+  CaptureRequest,
+  RefundRequest
 }

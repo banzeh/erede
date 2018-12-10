@@ -1,22 +1,19 @@
-import { ERede } from './erede'
+import { ERede, AuthorizationResponse, CaptureResponse, RefundResponse, AuthorizationRequest, CaptureRequest } from './erede'
 import { expect } from 'chai';
 import * as randomstring from 'randomstring'
-import { AuthorizationResponse } from './model/authorizationResponse';
-import { CaptureResponse } from './model/captureResponse';
-import { RefundResponse } from './model/refundResponse';
 
 var erede = new ERede("10000980", "b884f83537a441e7ab96cbfd9a76fa8f", true);
 
-const authorizationParams = {
-  "capture": false,
-  "reference": randomstring.generate(15),
-  "amount": 2099,
-  "cardholderName": "John Snow", 
-  "cardNumber": "5448280000000007",
-  "expirationMonth": 12, 
-  "expirationYear": 2020, 
-  "securityCode": "235"
-};
+const authorizationParams = new AuthorizationRequest({
+  capture: false,
+  reference: randomstring.generate(15),
+  amount: 2099,
+  cardHolderName: "John Snow",
+  cardNumber: "5448280000000007",
+  expirationMonth: 12,
+  expirationYear: 2020,
+  securityCode: "235"
+});
 
 describe('Teste SDK E-Rede', () => {
   let authorization = erede.authorization(authorizationParams);
@@ -65,9 +62,9 @@ describe('Teste SDK E-Rede', () => {
 
 
 function capturaVenda(resultAuthorization: AuthorizationResponse): Promise<CaptureResponse> {
-  const captureParams = {
+  const captureParams = new CaptureRequest({
     amount: 2099
-  };
+  });
   return erede.capture(resultAuthorization.tid, captureParams);
 }
 
