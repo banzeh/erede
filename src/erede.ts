@@ -51,7 +51,7 @@ export class ERede {
         },
         data: data
       })
-      .then((request) => resolve(new AuthorizationResponse().parse(request.data)))
+      .then((request) => resolve(<AuthorizationResponse> request.data))
       .catch(reject);
     })
   }
@@ -69,7 +69,7 @@ export class ERede {
         },
         data: data
       })
-      .then((request) => resolve(new RefundResponse().parse(request.data)))
+      .then((request) => resolve(<RefundResponse> request.data))
       .catch(reject);
     })
   }
@@ -89,7 +89,7 @@ export class ERede {
         },
         data: data
       })
-      .then((request) => resolve(new CaptureResponse().parse(request.data)))
+      .then((request) => resolve(<CaptureResponse> request.data))
       .catch(reject);
     })
   }
