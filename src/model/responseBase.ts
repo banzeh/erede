@@ -1,20 +1,7 @@
 import { Link } from './link';
 
-export class ResponseBase {
+export interface ResponseBase {
   returnCode: string;
   returnMessage: string;
   links: Array<Link>;
-
-  constructor(returnCode: string, returnMessage: string, links: Array<Link>){
-    this.returnCode = returnCode;
-    this.returnMessage = returnMessage;
-    this.links = links;
-  }
-
-  parse(data: any): ResponseBase {
-    this.returnCode = data.returnCode || '';
-    this.returnMessage = data.returnMessage || '';
-    this.links = data.links || [];
-    return this;
-  }
 }

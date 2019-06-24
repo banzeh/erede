@@ -1,4 +1,4 @@
-export class AuthorizationRequest {
+export interface AuthorizationRequest {
   /** @description Define se a transação terá captura automática ou posterior. O não envio desse campo será considerado a captura automática (true) */
   capture: boolean;
   /** 
@@ -51,22 +51,4 @@ export class AuthorizationRequest {
   origin: number;
   /** @description Número de filiação do distribuidor (PV) */
   distributorAffiliation: number;
-
-  constructor(data: any) {
-    data = (typeof data !== 'undefined') ? data : {};
-    this.capture = data.capture || false;
-    this.kind = data.kind || undefined;
-    this.reference = data.reference || undefined;
-    this.amount = data.amount || undefined;
-    this.installments = data.installments || undefined;
-    this.cardHolderName = data.cardHolderName || undefined;
-    this.cardNumber = data.cardNumber || undefined;
-    this.expirationMonth = data.expirationMonth || undefined;
-    this.expirationYear = data.expirationYear || undefined;
-    this.securityCode = data.securityCode || undefined;
-    this.softDescriptor = data.softDescriptor || undefined;
-    this.subscription = data.subscription || false;
-    this.origin = data.origin || undefined;
-    this.distributorAffiliation = data.distributorAffiliation || undefined;
-  }
 }
