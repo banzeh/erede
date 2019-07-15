@@ -4,6 +4,8 @@
   "description": "Integração com a API da rede",
   "main": "dist/erede.js",
   "scripts": {
+    "test": "npx mocha -r ts-node/register src/**/*.spec.ts",
+    "build": "npx tsc",
     "docs": "npx typedoc --out docs ./src"
   },
   "repository": {
