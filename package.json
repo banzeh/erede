@@ -1,6 +1,6 @@
 {
   "name": "erede",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Integração com a API da rede",
   "main": "dist/erede.js",
   "scripts": {
