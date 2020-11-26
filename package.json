@@ -33,6 +33,6 @@
     "randomstring": "^1.1.5",
     "ts-node": "^7.0.1",
     "typedoc": "^0.14.2",
-    "typescript": "^3.6.3"
+    "typescript": "^3.9.7"
   }
 }
