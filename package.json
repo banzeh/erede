@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@types/node": "^10.12.12",
-    "@types/randomstring": "^1.1.6",
+    "@types/randomstring": "^1.1.7",
     "@types/chai": "^4.2.14",
     "@types/mocha": "^5.2.7",
     "chai": "^4.2.0",
